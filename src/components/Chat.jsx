@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Container } from "./Container";
 export function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
@@ -12,37 +12,39 @@ export function Chat() {
   };
 
   return (
-    <div className="h-screen bg-gray-200 flex flex-col">
-      <div className="flex-1 p-4 overflow-y-auto">
-        {messages.map((message, index) => (
-          <div
-            key={index}
-            className={`my-2 p-3 rounded-lg w-2/3 ${
-              message.type === "user"
-                ? "ml-auto bg-blue-500 text-white"
-                : "bg-gray-300"
-            }`}
-          >
-            {message.content}
-          </div>
-        ))}
-      </div>
-      <div className="p-4 bg-white border-t border-gray-300">
-        <div className="flex">
-          <input
-            className="flex-1 p-2 border rounded-md"
-            value={currentMessage}
-            onChange={(e) => setCurrentMessage(e.target.value)}
-            placeholder="Type your message..."
-          />
-          <button
-            onClick={sendMessage}
-            className="ml-2 bg-blue-500 text-white p-2 rounded-md"
-          >
-            Send
-          </button>
+    <div className="bg-gray-200 flex flex-col flex-1 h-full">
+      <Container className="flex flex-col h-full pb-10">
+        <div className="flex-1 p-4 overflow-y-auto items-center">
+          {messages.map((message, index) => (
+            <div
+              key={index}
+              className={`my-2 p-3 rounded-lg w-full ${
+                message.type === "user"
+                  ? "ml-auto bg-blue-500 text-white"
+                  : "bg-gray-300"
+              }`}
+            >
+              {message.content}
+            </div>
+          ))}
         </div>
-      </div>
+        <div className="p-4 bg-white border-t border-gray-300  pb-5">
+          <div className="flex ">
+            <input
+              className="flex-1 p-2 border rounded-md "
+              value={currentMessage}
+              onChange={(e) => setCurrentMessage(e.target.value)}
+              placeholder="Type your message..."
+            />
+            <button
+              onClick={sendMessage}
+              className="ml-2 bg-blue-500 text-white p-2 rounded-md"
+            >
+              Send
+            </button>
+          </div>
+        </div>
+      </Container>
     </div>
   );
 }
