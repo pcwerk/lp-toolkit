@@ -12,13 +12,13 @@ export function Chat() {
   };
 
   return (
-    <div className="bg-gray-200 flex flex-col flex-1 h-full">
-      <Container className="flex flex-col h-full pb-10">
+    <div className="bg-gray-200 flex flex-col h-full">
+      <Container className="flex flex-col pb-10 w-full h-full">
         <div className="flex-1 p-4 overflow-y-auto items-center">
           {messages.map((message, index) => (
             <div
               key={index}
-              className={`my-2 p-3 rounded-lg w-full ${
+              className={`my-2 p-3 rounded-lg ${
                 message.type === "user"
                   ? "ml-auto bg-blue-500 text-white"
                   : "bg-gray-300"
