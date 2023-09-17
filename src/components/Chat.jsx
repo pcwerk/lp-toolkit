@@ -28,7 +28,7 @@ export function Chat() {
             </div>
           ))}
         </div>
-        <div className="p-4 bg-white border-t border-gray-300  pb-5">
+        <div className="p-4 bg-white rounded-md border-t border-gray-300  pb-5">
           <div className="flex ">
             <input
               className="flex-1 p-2 border rounded-md "
