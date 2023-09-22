@@ -9,6 +9,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install`
+
+Installs npm packages. Run When pulling the project from github. 
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -48,8 +52,8 @@ Run following commands to create and run Docker image
 
 Navigate to the directory of lp-toolkit
 
-docker build -t lp-toolkit .
-docker run -p 3000:3000 lp-toolkit
+docker build -t lp-toolkit:v1 .
+docker run -p 3000:3000 --rm lp-toolkit:v1                   
 
 
 ## Learn More
