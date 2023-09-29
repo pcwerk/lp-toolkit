@@ -9,6 +9,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `Running Docker`
+In the top level run
+
+`docker build -t lp-toolkit:v1 .`
+
+`docker run -p 3000:3000 --rm lp-toolkit:v1`
+
+To stop running the container
+
+`docker stop lp-toolkit:v1`
+
+
 ### `npm start`
 
 Runs the app in the development mode.\
