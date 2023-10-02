@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container } from "./Container";
+import { ChatBubble } from "./ChatBubble";
+
 export function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
@@ -16,16 +18,7 @@ export function Chat() {
       <Container className="flex flex-col pb-10 w-full h-full">
         <div className="flex-1 p-4 overflow-y-auto items-center">
           {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`my-2 p-3 rounded-lg ${
-                message.type === "user"
-                  ? "ml-auto bg-blue-500 text-white"
-                  : "bg-gray-300"
-              }`}
-            >
-              {message.content}
-            </div>
+            <ChatBubble key={index} message={message} index={index} />
           ))}
         </div>
         <div className="p-4 bg-white rounded-md border-t border-gray-300  pb-5">
