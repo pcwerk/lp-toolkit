@@ -1,17 +1,20 @@
-// ChatBubble.js
 import React from "react";
 
-export function ChatBubble({ message, index }) {
+export function ChatBubble({ message, response, index }) {
   return (
-    <div
+    <div //Outer box
       key={index}
-      className={`my-2 p-3 rounded-lg ${
-        message.type === "user"
-          ? "ml-auto bg-blue-500 text-white"
-          : "bg-gray-300"
-      }`}
+      className="my-2 p-3 rounded-lg ml-auto bg-gray-100 text-black shadow-md"
     >
-      {message.content}
+      <div //User input
+      className="p-2 mb-2 rounded-lg bg-gray-100 text-black ">
+        {message.content}
+      </div>
+      {response && (
+        <div className="p-2 rounded-lg bg-white text-black">
+          {response.content}
+        </div>
+      )}
     </div>
   );
 }

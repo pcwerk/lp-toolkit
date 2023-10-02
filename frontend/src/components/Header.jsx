@@ -3,7 +3,7 @@ import { Container } from "./Container";
 
 export function Header() {
   return (
-    <header className=" bg-gray-300 shadow-md">
+    <header className="w-full bg-gray-300 shadow-md">
       <nav>
         <div className="flex items-center gap-6 text-center">
           <Container className="relative z-50 flex justify-between py-8">
