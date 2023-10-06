@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import { Container } from "./Container";
 import { ChatBubble } from "./ChatBubble";
+import axios from "axios";
 
 export function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
+  const [currentTimeStamp, setCurrentTimeStamp] = useState("");
+
+  const fetchTimestamp = async () => {
+    try {
+      const response = await axios.get("http://localhost:5050/timestamp");
+      setCurrentTimeStamp(response.data.localTimeStamp); // Set the single message with the timestamp
+    } catch (error) {
+      console.error("Failed to fetch timestamp:", error);
+      setCurrentTimeStamp("Failed to fetch timestamp");
+    }
+  };
 
   const sendMessage = () => {
     if (currentMessage) {
+      fetchTimestamp()
+      let timestamp = currentTimeStamp;
       // After sending a user message, hardcode a response for demonstration purposes
       setMessages([
         ...messages,
         { type: "user", content: currentMessage },
         {
           type: "response",
-          content:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+          content: timestamp,
         },
       ]);
       setCurrentMessage("");
