@@ -25,3 +25,20 @@ body, html {
     width: 250px;
     margin-bottom: 10px;
 }
+
+.user-message {
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.ai-response {
+    background-color: #ddd;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: right;
+}
+
