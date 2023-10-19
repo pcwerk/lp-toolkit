@@ -1,3 +1,6 @@
+## data space
+data/
+
 ## ignore OS turds
 .DS_Store
 .vscode

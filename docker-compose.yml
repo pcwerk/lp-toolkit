@@ -1,0 +1,42 @@
+services:
+
+  frontend:
+    build:
+      context: frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/usr/src/app
+    restart: unless-stopped
+    networks:
+      - react-express
+    depends_on:
+      - backend
+
+  backend:
+    restart: unless-stopped
+    build:
+      context: backend
+    ports: 
+      - 5050:5050
+    volumes:
+      - ./backend:/usr/src/app
+    depends_on:
+      - mongo
+    networks:
+      - express-mongo
+      - react-express
+
+  mongo:
+    restart: unless-stopped
+    image: mongo:4.2.0
+    volumes:
+      - ./data:/data/db
+    networks:
+      - express-mongo
+    expose:
+      - 27017
+networks:
+  react-express:
+  express-mongo:
+
