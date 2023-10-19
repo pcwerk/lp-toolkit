@@ -1,26 +1,27 @@
+// ... Rest of your code
+
 function sendMessage() {
-    // Get user input
-    const userInput = document.getElementById("userInput").value;
+    // ... Your existing code up to the setTimeout
 
-    // Check if the input is not empty
-    if (userInput.trim() === "") {
-        alert("Please enter a message.");
-        return;
-    }
-
-    // Append user message to chatBox
-    const chatBox = document.getElementById("chatBox");
-    const userMessageElement = document.createElement("div");
-    userMessageElement.classList.add("user-message");
-    userMessageElement.textContent = "You: " + userInput;
-    chatBox.appendChild(userMessageElement);
-
-    // Append AI's response to chatBox after a slight delay to simulate thinking
+    // Get AI's response from the server
     setTimeout(() => {
-        const aiResponseElement = document.createElement("div");
-        aiResponseElement.classList.add("ai-response");
-        aiResponseElement.textContent = "AI: Thanks for the message!"; // Replace this with a dynamic response if needed.
-        chatBox.appendChild(aiResponseElement);
+        fetch('http://localhost:3000/get-response', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ userInput: userInput })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const aiResponseElement = document.createElement("div");
+            aiResponseElement.classList.add("ai-response");
+            aiResponseElement.textContent = data.message;
+            chatBox.appendChild(aiResponseElement);
+        })
+        .catch(error => {
+            console.error('Error fetching AI response:', error);
+        });
     }, 1000);
 
     // Clear user input
