@@ -1,16 +1,17 @@
-FROM node:lts-alpine
+# It uses node:18-alpine as the base image for the Node.js application
+FROM node:18-alpine
 
-RUN apk update && apk add bash
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+# Create app directory
+WORKDIR /app
 
-ENV NODE_ENV=production
-WORKDIR /usr/src/app
+# Install app dependencies
+COPY package.json .
 
+RUN npm install
+
+# Bundle app source
 COPY . .
 
-RUN yarn
-RUN chown -R appuser:appgroup /usr/src/app
-
-USER appuser
-CMD [ "node", "server.js"]
 EXPOSE 5050
+
+CMD [ "node", "server.js" ]

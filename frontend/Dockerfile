@@ -1,16 +1,17 @@
-FROM node:lts-alpine
+# frontend/Dockerfile
+FROM node:18-alpine
 
-RUN apk update && apk add bash
-RUN addgroup -S appgroup && adduser -S appuser -G appgroup
-
-ENV NODE_ENV=production
+# Create app directory
 WORKDIR /usr/src/app
 
+# Install app dependencies
+COPY package.json .
+
+RUN npm install
+
+# Bundle app source
 COPY . .
 
-RUN npm install --production --silent && mv node_modules ../
-RUN chown -R appuser:appgroup /usr/src/app
-
-USER appuser
-CMD ["npm", "start"]
 EXPOSE 3000
+
+CMD [ "npm", "start" ]

@@ -17,7 +17,7 @@ services:
     restart: unless-stopped
     build:
       context: backend
-    ports: 
+    ports:
       - 5050:5050
     volumes:
       - ./backend:/usr/src/app
