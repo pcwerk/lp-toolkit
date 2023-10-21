@@ -38,7 +38,7 @@ export function Chat() {
   };
 
   return (
-    <div className="bg-white flex flex-col h-full">
+    <div className="bg-white dark:bg-black flex flex-col h-full">
       <Container className="flex flex-col pb-10 w-full h-full">
         <div className="flex-1 p-4 overflow-y-auto items-center">
           {messages.map((message, index) => {
