@@ -69,7 +69,7 @@ export function Chat() {
           />
           <button
             onClick={sendMessage}
-            className="ml-2 bg-blue-500 text-white p-2 rounded-md dark:bg-transparent dark:border dark:border-gray-300 dark:text-gray-300"
+            className="ml-2 bg-blue-500 text-white p-2 rounded-md dark:bg-transparent dark:border dark:border-gray-400 dark:text-gray-300"
           >
             Send
           </button>
