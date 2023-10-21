@@ -58,10 +58,11 @@ export function Chat() {
           })}
         </div>
       </Container>
-      <div className="fixed bottom-0  w-full pb-4 items-center   bg-gradient-to-b from-white to-gray-200">
-        <Container className="flex bg-white shadow-md rounded-md p-2 shadow-gray-400 ">
+      //CHAT FOOTER
+      <div className="fixed bottom-0  w-full pb-4 items-center   bg-gradient-to-b from-white to-gray-200 dark:bg-gradient-to-b dark:from-black dark:to-black">
+        <Container className="flex bg-white shadow-md dark:shadow-none rounded-md p-2 shadow-gray-400 dark:bg-[#444A4B]">
           <input
-            className="flex-1 p-2  rounded-md"
+            className="flex-1 p-2  rounded-md dark:bg-[#131314] dark:border dark:border-gray-500 dark:text-white"
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
             placeholder="Type your message..."
