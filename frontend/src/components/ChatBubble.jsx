@@ -11,12 +11,12 @@ export function ChatBubble({ message, response, index }) {
       <div //User input
         className="p-2 mb-2 rounded-lg bg-gray-100 text-black flex items-center"
       >
-        <BsFillPersonFill size={22} className=" mr-4" />
+        <BsFillPersonFill size={24} className=" mr-4" />
         {message.content}
       </div>
       {response && (
         <div className="p-2 rounded-lg bg-white text-black flex items-center">
-          <AiOutlineRobot size={22} className=" mr-4" />
+          <AiOutlineRobot size={24} className=" mr-4" />
           {response.content}
         </div>
       )}
