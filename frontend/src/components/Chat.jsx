@@ -13,18 +13,16 @@ export function Chat() {
       const response = await axios.get(
         "http://localhost:5050/serverHealthRoutes/timestamp"
       );
-      setCurrentTimeStamp(response.data.localTimeStamp); // Set the single message with the timestamp
+      return response.data.localTimeStamp;
     } catch (error) {
       console.error("Failed to fetch timestamp:", error);
-      setCurrentTimeStamp("Failed to fetch timestamp");
+      return "Failed to fetch timestamp";
     }
   };
 
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (currentMessage) {
-      fetchTimestamp();
-      let timestamp = currentTimeStamp;
-      // After sending a user message, hardcode a response for demonstration purposes
+      let timestamp = await fetchTimestamp();
       setMessages([
         ...messages,
         { type: "user", content: currentMessage },
