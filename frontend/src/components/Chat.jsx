@@ -24,7 +24,7 @@ export function Chat() {
     if (currentMessage) {
       fetchTimestamp();
       let timestamp = currentTimeStamp;
-      // After sending a user message, hardcode a response for demonstration purposes
+      // After sending a user message, hardcode a response for demonstration purposes. 
       setMessages([
         ...messages,
         { type: "user", content: currentMessage },

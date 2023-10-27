@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "./Container";
-
+//Make Header Dark Mode for user settings
 export function Header() {
   return (
     <header className="w-full bg-gray-300 dark:bg-black shadow-md">
