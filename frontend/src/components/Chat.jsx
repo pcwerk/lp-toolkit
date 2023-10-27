@@ -38,7 +38,7 @@ export function Chat() {
   };
 
   return (
-    <div className="bg-white flex flex-col h-full">
+    <div className="bg-white dark:bg-black flex flex-col h-full">
       <Container className="flex flex-col pb-10 w-full h-full">
         <div className="flex-1 p-4 overflow-y-auto items-center">
           {messages.map((message, index) => {
@@ -58,17 +58,18 @@ export function Chat() {
           })}
         </div>
       </Container>
-      <div className="fixed bottom-0  w-full pb-4 items-center   bg-gradient-to-b from-white to-gray-200">
-        <Container className="flex bg-white shadow-md rounded-md p-2 shadow-gray-400 ">
+      //CHAT FOOTER
+      <div className="fixed bottom-0  w-full pb-4 items-center   bg-gradient-to-b from-white to-gray-200 dark:bg-gradient-to-b dark:from-black dark:to-black">
+        <Container className="flex bg-white shadow-md dark:shadow-none rounded-md p-2 shadow-gray-400 dark:bg-[#444A4B]">
           <input
-            className="flex-1 p-2  rounded-md"
+            className="flex-1 p-2  rounded-md dark:bg-[#131314] dark:border dark:border-gray-500 dark:text-white"
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
             placeholder="Type your message..."
           />
           <button
             onClick={sendMessage}
-            className="ml-2 bg-blue-500 text-white p-2 rounded-md"
+            className="ml-2 bg-blue-500 text-white p-2 rounded-md dark:bg-transparent dark:border dark:border-gray-400 dark:text-gray-300"
           >
             Send
           </button>
