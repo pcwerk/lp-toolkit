@@ -1,4 +1,4 @@
-name: Frontend CI/CD Pipeline
+name: Frontend CI/CD 
 
 on:
   push:
@@ -17,7 +17,6 @@ jobs:
     strategy:
       matrix:
         node-version: [20.x]
-        # Include operating systems if necessary, etc.
 
     steps:
       - uses: actions/checkout@v3
