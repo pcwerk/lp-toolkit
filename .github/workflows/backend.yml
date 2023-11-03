@@ -5,10 +5,13 @@ on:
     branches: ["**"]
     paths:
       - "backend/**"
-
+  pull_request:
+    branches: ["**"]
+    paths:
+      - "backend/**"
 # Jobs to run
 jobs:
-  build-and-test:
+  CI:
     # This job runs on Linux
     runs-on: ubuntu-latest
 
