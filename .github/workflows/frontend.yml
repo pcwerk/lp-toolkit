@@ -1,14 +1,15 @@
-name: Frontend CI/CD 
+name: Frontend CI/CD
 
 on:
   push:
-    branches: ['**']
+    branches: ["**"]
     paths:
       - "frontend/**"
   pull_request:
     branches: [main]
     paths:
       - "frontend/**"
+  workflow_dispatch:
 
 jobs:
   CI:
@@ -33,17 +34,17 @@ jobs:
       - name: Run Linter
         run: npm run lint
 
-    #   - name: Run Jest Tests
-    #     run: npm test
-    #     # or if you have a separate script for jest
-    #     # run: npm run test:jest
+      #   - name: Run Jest Tests
+      #     run: npm test
+      #     # or if you have a separate script for jest
+      #     # run: npm run test:jest
 
-    #   - name: Run Playwright Tests
-    #     run: npm run test:playwright
-    #     env:
-    #       # Set environment variables required for Playwright tests
-    #       HEADLESS: true
-    #       CI: true
+      #   - name: Run Playwright Tests
+      #     run: npm run test:playwright
+      #     env:
+      #       # Set environment variables required for Playwright tests
+      #       HEADLESS: true
+      #       CI: true
 
       - name: Build
         run: npm run build
