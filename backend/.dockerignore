@@ -20,5 +20,6 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
+**/node_modules/
 LICENSE
 README.md
