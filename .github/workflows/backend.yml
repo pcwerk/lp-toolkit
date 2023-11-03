@@ -29,14 +29,10 @@ jobs:
         run: |
           cd backend
           npm ci
-        # This command installs npm dependencies based on the lockfile
 
-      # - name: Run linting
-      #   run: |
-      #     cd backend
-      #     npm run lint
-      # Add a lint script in your package.json file to execute your linter
+      #Add Tests Here
 
-    #   - name: Run unit tests
-    #     run: npm test
-    #     # Runs your test suite. This assumes you've set up "test" in your package.json scripts to run your Jest tests.
+      - name: Build
+        run: |
+          cd frontend   
+          npm run build

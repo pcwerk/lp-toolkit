@@ -27,34 +27,9 @@ jobs:
           cd frontend
           npm ci
 
-    #   - name: Run Linter
-    #     run: |
-    #       cd frontend 
-    #       npm run lint
-
-      #   - name: Run Jest Tests
-      #     run: npm test
-      #     # or if you have a separate script for jest
-      #     # run: npm run test:jest
-
-      #   - name: Run Playwright Tests
-      #     run: npm run test:playwright
-      #     env:
-      #       # Set environment variables required for Playwright tests
-      #       HEADLESS: true
-      #       CI: true
+      #Add tests here
 
       - name: Build
-        run: npm run build
-
-    # You can add additional steps for deployment as needed
-
-    # If you use services like Percy or BrowserStack, integrate them here
-
-    #   - uses: actions/checkout@v3
-    #     #Step1 Set up node
-    #   - name: Use Node.js ${{ matrix.node-version }}
-    #     uses: actions/setup-node@v3
-    #     with:
-    #       node-version: ${{ matrix.node-version }}
-    #       cache: "npm"
+        run: |
+          cd frontend  
+          npm run build
