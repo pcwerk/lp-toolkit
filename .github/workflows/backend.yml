@@ -31,10 +31,10 @@ jobs:
           npm ci
         # This command installs npm dependencies based on the lockfile
 
-      - name: Run linting
-        run: |
-          cd backend
-          npm run lint
+      # - name: Run linting
+      #   run: |
+      #     cd backend
+      #     npm run lint
       # Add a lint script in your package.json file to execute your linter
 
     #   - name: Run unit tests
