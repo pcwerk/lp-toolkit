@@ -32,7 +32,9 @@ jobs:
         # This command installs npm dependencies based on the lockfile
 
       - name: Run linting
-        run: npm run lint
+        run: |
+          cd backend
+          npm run lint
       # Add a lint script in your package.json file to execute your linter
 
     #   - name: Run unit tests

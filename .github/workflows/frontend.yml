@@ -28,7 +28,9 @@ jobs:
           npm ci
 
       - name: Run Linter
-        run: npm run lint
+        run: |
+          cd frontend 
+          npm run lint
 
       #   - name: Run Jest Tests
       #     run: npm test
