@@ -11,7 +11,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const port = process.env.PORT || 5050;
-
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/lp-toolkit'
+console.log("MONGO URI" , mongoURI)
 app.use('/serverHealthRoutes', serverHealthRoutes);
 
 // This displays a message indicating that the server is running and listening to the specified port

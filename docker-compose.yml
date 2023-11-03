@@ -23,6 +23,8 @@ services:
       - ./backend:/usr/src/app
     depends_on:
       - mongo
+    environment:
+      - MONGO_URI='mongodb://mongo:27017/lp-toolkit'
     networks:
       - express-mongo
       - react-express
