@@ -5,7 +5,7 @@ from app.langchain_agent import conversation
 
 #Input must be a string
 class InputData(BaseModel):
-    text: str
+    human_input: str
 #Output must be a string
 class Output(BaseModel):
     output: str
@@ -16,7 +16,7 @@ app = FastAPI()
 #Endpoint for text input
 @app.post("/process-lang")
 async def input(input: InputData): #Take in the data as param
-    output = Output(output=conversation(InputData.text))
+    output = Output(output=conversation(InputData.human_input))
     return output
 
 
