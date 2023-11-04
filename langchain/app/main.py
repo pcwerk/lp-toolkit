@@ -16,7 +16,7 @@ app = FastAPI()
 #Endpoint for text input
 @app.post("/process-lang")
 async def input(input: InputData): #Take in the data as param
-    output = Output(output=conversation(InputData.human_input))
+    output = Output(output=conversation(input.human_input))
     return output
 
 
@@ -24,8 +24,3 @@ async def input(input: InputData): #Take in the data as param
 @app.get("/")
 def home():
     return {"Data": "Testing"}
-
-#route for the conversation
-@app.post("/conversation")
-async def input():
-    return {"Conversation": "Test"}
