@@ -1,20 +1,23 @@
-#Create the FastAPI app
 from fastapi import FastAPI 
-app = FastAPI()
+from pydantic import BaseModel #Data validation
+from app.langchain_agent import conversation
 
-#pydantic for data validation
-from pydantic import BaseModel
+
+#Input must be a string
 class InputData(BaseModel):
     text: str
+#Output must be a string
+class Output(BaseModel):
+    output: str
 
+#Create FastAPI app
+app = FastAPI()
 
 #Endpoint for text input
 @app.post("/process-lang")
-async def process_lang(data: InputData): #Take in the data as param
-    #Call OpenAI API, APIKEY
-    
-
-
+async def input(input: InputData): #Take in the data as param
+    output = Output(output=conversation(InputData.text))
+    return output
 
 
 #test to see if api works

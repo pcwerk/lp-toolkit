@@ -1,5 +1,4 @@
 #Logic for langchain
-
 #Import requirements
 from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
 
