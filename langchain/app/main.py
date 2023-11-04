@@ -1,6 +1,6 @@
 from fastapi import FastAPI 
 from pydantic import BaseModel #Data validation
-from app.langchain_agent import conversation
+from langchain_agent import conversation
 
 
 #Input must be a string
