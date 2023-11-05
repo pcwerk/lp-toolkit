@@ -6,7 +6,6 @@ import axios from "axios";
 export function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
-  const [currentTimeStamp, setCurrentTimeStamp] = useState("");
 
   const fetchTimestamp = async () => {
     try {
