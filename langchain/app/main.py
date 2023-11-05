@@ -15,12 +15,6 @@ app = FastAPI()
 
 #Endpoint for text input
 @app.post("/process-lang")
-async def input(input: InputData): #Take in the data as param
-    output = Output(output=conversation(input.human_input))
-    return output
-
-
-#test to see if api works
-@app.get("/")
-def home():
-    return {"Data": "Testing"}
+async def input(input: InputData): #Take in the Inputdata string as param
+    output = Output(output=conversation(input.human_input)) #calls conversation function from langchain_agent
+    return output #returns output
