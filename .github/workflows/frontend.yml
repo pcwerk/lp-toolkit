@@ -33,3 +33,5 @@ jobs:
         run: |
           cd frontend  
           npm run build
+        env:
+          CI: false

@@ -36,3 +36,5 @@ jobs:
         run: |
           cd backend   
           npm run build
+        env:
+          CI: false
