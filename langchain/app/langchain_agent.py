@@ -16,7 +16,7 @@ def conversation(human_input):
     )
 
     chatgpt_chain = LLMChain(
-        llm=OpenAI(temperature=0),
+        llm=OpenAI(temperature=0.5),
         prompt=prompt,
         verbose=True,
     )
