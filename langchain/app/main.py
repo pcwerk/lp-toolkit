@@ -1,6 +1,7 @@
 from fastapi import FastAPI 
 from pydantic import BaseModel #Data validation
 from langchain_agent import conversation
+from fastapi.middleware.cors import CORSMiddleware
 
 
 #Input must be a string
@@ -12,6 +13,21 @@ class Output(BaseModel):
 
 #Create FastAPI app
 app = FastAPI()
+
+#origins for localhost
+origins = [
+    "<http://localhost>",
+    "<http://localhost:5050>"
+]
+
+#Add the middeware so that the express server can connect with this one
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 #Endpoint for text input
 @app.post("/process-lang")
