@@ -19,23 +19,24 @@ jobs:
 
     # Steps represent a sequence of tasks to run as part of the job
     steps:
-      - uses: actions/checkout@v3
-        # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-
-      - name: Set up Node.js
+      - uses: actions/checkout@v4
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "20.x" # Replace this with the version of Node.js your project uses
-          cache: "npm"
+          node-version: "20.x"
 
       - name: Install dependencies
-        run: npm ci
-        # This command installs npm dependencies based on the lockfile
 
-      - name: Run linting
-        run: npm run lint
-        # Add a lint script in your package.json file to execute your linter
+        run: |
+          cd backend
+          npm ci
 
-    #   - name: Run unit tests
-    #     run: npm test
-    #     # Runs your test suite. This assumes you've set up "test" in your package.json scripts to run your Jest tests.
+      #Add Tests Here
+
+      - name: Build
+        run: |
+          cd backend   
+          npm run build
+        env:
+          CI: false
+

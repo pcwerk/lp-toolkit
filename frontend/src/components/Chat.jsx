@@ -6,7 +6,6 @@ import axios from "axios";
 export function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
-  const [currentTimeStamp, setCurrentTimeStamp] = useState("");
 
   const fetchTimestamp = async () => {
     try {
@@ -40,18 +39,20 @@ export function Chat() {
       <Container className="flex flex-col pb-10 w-full h-full">
         <div className="flex-1 p-4 overflow-y-auto items-center">
           {messages.map((message, index) => {
-            // Check if the message type is 'user', then render ChatBubble with response
+            {
+              /*  Check if the message type is 'user', then render ChatBubble with response*/
+            }
             if (message.type === "user") {
               return (
                 <ChatBubble
                   key={index}
                   message={message}
-                  response={messages[index + 1]} // This assumes there is always a response after a user message
+                  response={messages[index + 1]}
                   index={index}
                 />
               );
             } else {
-              return null; // Do not render a separate ChatBubble for responses
+              return null;
             }
           })}
         </div>
