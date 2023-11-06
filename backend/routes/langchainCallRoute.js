@@ -6,8 +6,4 @@ const langchainCallRoute = express.Router();
 // Basic route to return a timestamp
 langchainCallRoute.post("/langchainChat", (req, res) => {
   //call fastapi from this endpoint
-  const date = new Date();
-  let localTimeStamp = date.toLocaleString();
-  localTimeStamp = localTimeStamp.replace(/\s/g, " ");
-  res.json({ localTimeStamp });
 });
