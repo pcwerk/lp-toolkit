@@ -21,7 +21,9 @@ export function Chat() {
 
   // Define function for sendingUserMessage with input data
   const sendUserMessage = (message) => {
-    return axios.post("/langchainCallRoute/ask", { userInput: message });
+    return axios.post("http://localhost:5050/langchainCallRoute/ask", {
+      data: message,
+    });
   };
 
   const sendMessage = async () => {
