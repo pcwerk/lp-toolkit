@@ -6,7 +6,7 @@ langchainCallRoute.post("/ask", async (req, res) => {
   //call fastapi from this endpoint
   try {
     //get user input
-    const userInput = "What are some good soccer team names?";
+    const userInput = req.body.data;
 
     //make request to fastapi server
     const fastResponse = await axios.post(

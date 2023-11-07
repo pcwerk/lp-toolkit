@@ -4,6 +4,8 @@ import serverHealthRoutes from "./routes/serverHealthRoutes.js";
 import langchainCallRoute from "./routes/langchainCallRoute.js";
 
 const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Allow CORS only for specific origins (recommended for production)
 const corsOptions = {
