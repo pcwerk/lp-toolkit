@@ -39,7 +39,7 @@ export function Chat() {
         setMessages([
           ...messages,
           { type: "user", content: currentMessage },
-          { type: "response", content: response.data.message },
+          { type: "response", content: response.data.dataFromFastapi.output },
           {
             type: "response",
             content: timestamp,
