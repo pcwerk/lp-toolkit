@@ -12,13 +12,13 @@ In the project directory, you can run:
 ### `Running Docker`
 In the top level run
 
-`docker build -t lp-toolkit:v1 .`
+`docker build -t lp-toolkit/frontend:v1 .`
 
-`docker run -p 3000:3000 --rm lp-toolkit:v1`
+`docker run -p 3000:3000 --rm lp-toolkit/frontend:v1`
 
 To stop running the container
 
-`docker stop lp-toolkit:v1`
+`docker stop lp-toolkit/frontend:v1`
 
 
 ### `npm start`
