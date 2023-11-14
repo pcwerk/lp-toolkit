@@ -16,6 +16,8 @@ app = FastAPI()
 
 #origins for localhost
 origins = [
+    "http://localhost:3000",
+    "localhost:3000"
     "<http://localhost>",
     "<http://localhost:5050>"
 ]
@@ -33,4 +35,4 @@ app.add_middleware(
 @app.post("/process-lang")
 async def input(input: InputData): #Take in the Inputdata string as param
     output = Output(output=conversation(input.human_input)) #calls conversation function from langchain_agent
-    return output #returns output
+    return output #returns outpu

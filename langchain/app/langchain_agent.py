@@ -1,6 +1,8 @@
 #Logic for langchain
 #Import requirements
-from langchain import OpenAI, ConversationChain, LLMChain, PromptTemplate
+from langchain.llms import OpenAI
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
 
 #Load in the enviroment variables
 from dotenv import load_dotenv
