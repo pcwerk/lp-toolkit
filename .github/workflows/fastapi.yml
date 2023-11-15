@@ -40,13 +40,13 @@ jobs:
         with:
           path: venv # what we cache: the Virtual ENV
           # The cache key depends on requirements.txt
-          key: ${{ runner.os }}-venv-${{ hashFiles('requirements*.txt') }}
+          key: ${{ runner.os }}-venv-${{ hashFiles('langchain/requirements*.txt') }}
           restore-keys: |
             ${{ runner.os }}-venv-
 
       # Step-4 Build a Virtual ENV, but only if it doesn't already exist
       - name: Activate Virtual ENV
-        run: pip install --upgrade pip && python -m venv venv && source venv/bin/activate && pip3 install -r requirements.txt
+        run: pip install --upgrade pip && python -m venv venv && source venv/bin/activate && pip3 install -r langchain/requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
 
     #   - name: Create archive of dependencies
