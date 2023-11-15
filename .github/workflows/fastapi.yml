@@ -4,11 +4,11 @@ on:
   push:
     branches: ["**"]
     paths:
-      - "frontend/**"
+      - "langchain/**"
   pull_request:
     branches: [main]
     paths:
-      - "frontend/**"
+      - "langchain/**"
 
   workflow_dispatch:
 
