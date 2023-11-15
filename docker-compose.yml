@@ -1,10 +1,12 @@
+version: '3.8'
+
 services:
   frontend:
     container_name: lp-toolkit-frontend
     build:
       context: frontend
     ports:
-      - 3000:3000
+      - "3000:3000"
     volumes:
       - ./frontend:/usr/src/app
     restart: unless-stopped
@@ -15,31 +17,45 @@ services:
 
   backend:
     container_name: lp-toolkit-backend
-    restart: unless-stopped
     build:
       context: backend
     ports:
-      - 5050:5050
+      - "5050:5050"
     volumes:
       - ./backend:/usr/src/app
-    depends_on:
-      - mongo
     environment:
-      - MONGO_URI='mongodb://mongo:27017/lp-toolkit'
+      - MONGO_URI=mongodb://mongo:27017/lp-toolkit
+    restart: unless-stopped
     networks:
       - express-mongo
       - react-express
+    depends_on:
+      - mongo
+
+  fastapi:
+    container_name: lp-toolkit-fastapi
+    build: ./langchain
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./langchain/app:/usr/src/app
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: unless-stopped
+    networks:
+      - express-mongo  # Include if FastAPI needs to communicate with MongoDB
+      - react-express  # For communication with the frontend
 
   mongo:
     container_name: lp-toolkit-mongo
-    restart: unless-stopped
     image: mongo:4.2.0
     volumes:
       - ./data:/data/db
+    restart: unless-stopped
     networks:
       - express-mongo
     expose:
-      - 27017
+      - "27017"
 
 networks:
   react-express:

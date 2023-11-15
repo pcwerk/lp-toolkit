@@ -19,17 +19,37 @@ export function Chat() {
     }
   };
 
+  // Define function for sendingUserMessage with input data
+  const sendUserMessage = (message) => {
+    return axios.post("http://localhost:5050/langchainCallRoute/ask", {
+      data: message,
+    });
+  };
+
   const sendMessage = async () => {
     if (currentMessage) {
+      //timestamp
       let timestamp = await fetchTimestamp();
-      setMessages([
-        ...messages,
-        { type: "user", content: currentMessage },
-        {
-          type: "response",
-          content: timestamp,
-        },
-      ]);
+      //add user message to chat
+      setMessages([...messages, { type: "user", content: currentMessage }]);
+      //try to send user message to express route
+      try {
+        const response = await sendUserMessage(currentMessage);
+        //add response from express route to chat
+        setMessages([
+          ...messages,
+          { type: "user", content: currentMessage },
+          { type: "response", content: response.data.dataFromFastapi.output },
+          {
+            type: "response",
+            content: timestamp,
+          },
+        ]);
+      } catch (error) {
+        console.log("Failed to send user message: ", error);
+      }
+
+      //clear message input
       setCurrentMessage("");
     }
   };
