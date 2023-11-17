@@ -1,6 +1,7 @@
+
 from fastapi import FastAPI
 from pydantic import BaseModel  # Data validation
-from langchain_agent import conversation
+from .langchain_agent import conversation
 from fastapi.middleware.cors import CORSMiddleware
 
 
