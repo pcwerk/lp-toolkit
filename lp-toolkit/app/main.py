@@ -1,7 +1,10 @@
 
 from fastapi import FastAPI
 from pydantic import BaseModel  # Data validation
-from .langchain_agent import conversation
+if __name__ == "main":
+    from langchain_agent import conversation  # For running with Uvicorn
+else:
+    from .langchain_agent import conversation  # For testing
 from fastapi.middleware.cors import CORSMiddleware
 
 
