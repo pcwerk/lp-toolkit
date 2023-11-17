@@ -1,0 +1,3 @@
+{"type":"after","callId":"hook@10","endTime":1671.979,"log":[],"attachments":[]}
+{"type":"before","callId":"fixture@14","parentId":"hook@10","wallTime":1700103531694,"startTime":1673.0430000000001,"class":"Test","method":"step","apiName":"fixture: browser","params":{},"stack":[]}
+{"type":"after","callId":"fixture@14","endTime":1721.882,"log":[],"attachments":[]}
