@@ -51,10 +51,10 @@ jobs:
       
       #Step-5 Run Tests
       - name: Run Tests
-      run: |
-        source venv/bin/activate
-        source venv/bin/activate
-        pytest lp-toolkit/tests
+        run: |
+          source venv/bin/activate
+          source venv/bin/activate
+          pytest lp-toolkit/tests
 
     #   - name: Create archive of dependencies
     #     run: |
