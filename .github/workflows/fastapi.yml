@@ -51,7 +51,9 @@ jobs:
       
       #Step-5 Run Tests
       - name: Run Tests
-        run: pytest
+        run: |
+          pip install pytest
+          pytest
 
     #   - name: Create archive of dependencies
     #     run: |
