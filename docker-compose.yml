@@ -34,11 +34,11 @@ services:
 
   fastapi:
     container_name: lp-toolkit-fastapi
-    build: ./langchain
+    build: ./lp-toolkit
     ports:
       - "8000:8000"
     volumes:
-      - ./langchain/app:/usr/src/app
+      - ./lp-toolkit/app:/usr/src/app
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     restart: unless-stopped
