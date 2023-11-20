@@ -42,8 +42,10 @@ jobs:
           pip install --upgrade pip
           pip install -r lp-toolkit/requirements.txt
         if: steps.cache-venv.outputs.cache-hit != 'true'
-      
+
       - name: Run Tests
         run: |
           source venv/bin/activate
           pytest lp-toolkit/tests
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
