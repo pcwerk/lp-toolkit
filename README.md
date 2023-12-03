@@ -15,7 +15,7 @@ The project's goals include:
 
 ## Getting started
 
-Out of the box, `lp-toolkit` uses the ChatGPT engine, an OpenAI API key is needed.  To get started quickly, we assume that you have the following installed in your system:
+Out of the box, `lp-toolkit` uses the ChatGPT engine, an OpenAI API key is needed.  To get started quickly, the following tools are required:
 
 - `npm`
 - `docker` and `docker-compose`
@@ -42,8 +42,6 @@ export OPENAI_API_KEY={replace-with-your-openai-api-key}
 docker-compose up
 ```
 
-Point your web browser to `http://localhost:3000`
-
-And you should see the following screen:
+Point a web browser to `http://localhost:3000` and the following screen should be shown:
 
 ![image](resources/lp-toolkit-initial-window.png)
