@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Allow CORS only for specific origins (recommended for production)
 const corsOptions = {
-  origin: "http://localhost:3000", // Replace this with your application's actual origin
+	origin: ["http://localhost:3000", "http://localhost:80"] // Replace this with your application's actual origin
 };
 app.use(cors(corsOptions));
 
