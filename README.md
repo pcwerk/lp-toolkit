@@ -1,33 +1,45 @@
 # lp-toolkit
 
-## Installing NPM Packages
+`lp-toolkit` is a project aimed to help developers get started with ML/AI development. It is both simple and flexible in its design and implementation.  
 
-Navigate to frontend directory and run npm install
+The project's goals include:
 
-```bash
-cd frontend/
-npm install
-cd ../
-```
-![npmInsatllFrontend](https://github.com/pcwerk/lp-toolkit/assets/64550798/04fa15da-3aaa-4a32-95a0-2e0f8e230724)
+- Configurable and plugin architecture to allow adoption of evolving technologies
+- Rapid instantiate and deploy a robust AI/ML development environment
+- Utilize existing OpenSource tools - why reinvent the wheel?
+- Self-contained containerized microservices - batteries included!
 
-Navigate to backend directory and run npm install
-```bash 
-cd backend/
-npm install
-cd ../
-```
-![npmInstallBackend](https://github.com/pcwerk/lp-toolkit/assets/64550798/604f67e6-0639-4936-a6f8-1d58dfe3c316)
+## Getting started
 
-## Running Docker 
+Out of the box, `lp-toolkit` uses the ChatGPT engine, an OpenAI API key is needed.  To get started quickly, we assume that you have the following installed in your system:
 
-From Root directory run docker compose
+- `npm`
+- `docker` and `docker-compose`
+
+The first step is to compile the frontend:
 
 ```bash
+cd lp-toolkit/frontend/
+npm install
+```
+
+Next, compile the backend:
+
+```bash
+cd lp-toolkit/backend/
+npm install
+```
+
+Finally, start the `lp-toolkit` system:
+
+```bash
+cd lp-toolkit/
+export OPENAI_API_KEY={replace-with-your-openai-api-key}
 docker-compose up
 ```
-In browser go to
-```bash
-localhost:3000
-```
-![image](https://github.com/pcwerk/lp-toolkit/assets/64550798/ef93b8c6-81e3-411e-b4a7-5c5eba6848be)
+
+Point your web browser to `http://localhost:3000`
+
+And you should see the following screen:
+
+![image](resources/278533292-ef93b8c6-81e3-411e-b4a7-5c5eba6848be.png)
