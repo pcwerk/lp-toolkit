@@ -1,12 +1,13 @@
 version: '3.8'
 
 services:
+
   frontend:
     container_name: lp-toolkit-frontend
     build:
       context: frontend
     ports:
-      - "3000:3000"
+      - 3000:3000
     volumes:
       - ./frontend:/usr/src/app
     restart: unless-stopped
@@ -20,7 +21,7 @@ services:
     build:
       context: backend
     ports:
-      - "5050:5050"
+      - 5050:5050
     volumes:
       - ./backend:/usr/src/app
     environment:
@@ -36,15 +37,15 @@ services:
     container_name: lp-toolkit-langchain
     build: ./langchain
     ports:
-      - "8000:8000"
+      - 8000:8000
     volumes:
       - ./langchain/app:/usr/src/app
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     restart: unless-stopped
     networks:
-      - express-mongo  # Include if langchain needs to communicate with MongoDB
-      - react-express  # For communication with the frontend
+      - express-mongo
+      - react-express
     depends_on:
       - mongo
 
@@ -53,7 +54,7 @@ services:
     container_name: lp-toolkit-proxy
     restart: unless-stopped
     ports:
-      - "80:80"
+      - 80:80
     depends_on:
       - frontend
       - backend
@@ -70,8 +71,6 @@ services:
     restart: unless-stopped
     networks:
       - express-mongo
-    expose:
-      - "27017"
 
 networks:
   react-express:
