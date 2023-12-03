@@ -32,8 +32,8 @@ services:
     depends_on:
       - mongo
 
-  fastapi:
-    container_name: lp-toolkit-fastapi
+  langchain:
+    container_name: lp-toolkit-langchain
     build: ./langchain
     ports:
       - "8000:8000"
@@ -43,8 +43,24 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
     restart: unless-stopped
     networks:
-      - express-mongo  # Include if FastAPI needs to communicate with MongoDB
+      - express-mongo  # Include if langchain needs to communicate with MongoDB
       - react-express  # For communication with the frontend
+    depends_on:
+      - mongo
+
+  proxy:
+    image: nginx
+    container_name: lp-toolkit-proxy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+    volumes:
+      - ./proxy/nginx.proxy.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - react-express
 
   mongo:
     container_name: lp-toolkit-mongo

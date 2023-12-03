@@ -10,7 +10,7 @@ langchainCallRoute.post("/ask", async (req, res) => {
 
     //make request to fastapi server
     const fastResponse = await axios.post(
-      "http://fastapi:8000/process-lang",
+      "http://langchain:8000/process-lang",
       {
         human_input: userInput,
       }
