@@ -9,6 +9,10 @@ The project's goals include:
 - Utilize existing OpenSource tools - why reinvent the wheel?
 - Self-contained containerized microservices - batteries included!
 
+## Architecture
+
+![archictecture](resources/lp-toolkit-architecture-2023-12-03.png)
+
 ## Getting started
 
 Out of the box, `lp-toolkit` uses the ChatGPT engine, an OpenAI API key is needed.  To get started quickly, we assume that you have the following installed in your system:
@@ -42,4 +46,4 @@ Point your web browser to `http://localhost:3000`
 
 And you should see the following screen:
 
-![image](resources/278533292-ef93b8c6-81e3-411e-b4a7-5c5eba6848be.png)
+![image](resources/lp-tookit-initial-window.png)
