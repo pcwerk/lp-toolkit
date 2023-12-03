@@ -11,14 +11,20 @@ The project's goals include:
 
 ## Architecture
 
+`lp-toolkit` is comprised of microservices that run inside a docker container environment.  Query requests are made to the `proxy` which routes them to either the `frontend` (for static assets, e.g. HTML, css, images, etc) or `backend` (API calls).  The persistent database is `mongo`.  The engine of the `lp-toolkit` is consisted of a LangChain wrapper and various microservices, e.g. `vectorizer` and other data analytics tools.  Communications between the microservices are accomplished through inter-docker API calls.
+
+Note that in its current design, `lp-toolkit` does not scale.  For a large and complex production or enterprize deployment, use of a scaling technologies, e.g. a Kubernetes cluster, is almost a must.
+
 ![archictecture](resources/lp-toolkit-architecture-2023-12-03.png)
 
-## Getting started
+## Quick Start Guide
 
-Out of the box, `lp-toolkit` uses the ChatGPT engine, an OpenAI API key is needed.  To get started quickly, the following tools are required:
+Before getting started, the following tools are required:
 
 - `npm`
 - `docker` and `docker-compose`
+
+Note that out of the box, `lp-toolkit` uses the ChatGPT engine.  Therefore, an [OpenAI](https://openai.com/) API key is needed.  
 
 The first step is to compile the frontend:
 
