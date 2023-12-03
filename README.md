@@ -46,4 +46,4 @@ Point your web browser to `http://localhost:3000`
 
 And you should see the following screen:
 
-![image](resources/lp-tookit-initial-window.png)
+![image](resources/lp-toolkit-initial-window.png)
