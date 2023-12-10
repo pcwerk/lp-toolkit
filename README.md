@@ -15,7 +15,7 @@ The project's goals include:
 
 Note that in its current design, `lp-toolkit` does not scale.  For a large and complex production or enterprize deployment, use of a scaling technologies, e.g. a Kubernetes cluster, is almost a must.
 
-![archictecture](resources/lp-toolkit-architecture-2023-12-03.png)
+![architecture](resources/lp-toolkit-architecture-2023-12-03.png)
 
 ## Quick Start Guide
 
