@@ -2,11 +2,12 @@
 FROM node:18-alpine
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Install app dependencies
+COPY package.json .
+RUN npm install
 COPY . .
-RUN yarn install
 
 EXPOSE 3000
 
