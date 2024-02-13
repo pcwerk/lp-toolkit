@@ -18,7 +18,7 @@ def conversation(human_input):
     )
 
     chatgpt_chain = LLMChain(
-        llm=OpenAI(temperature=0.5),
+        llm=OpenAI(model_name="gpt-3.5-turbo-instruct",temperature=0.5),
         prompt=prompt,
         verbose=True,
     )
