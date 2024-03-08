@@ -12,9 +12,12 @@
     "build": "echo \"Error: no build step required for backend\" && exit 0"
   },
   "dependencies": {
+    "@langchain/community": "^0.0.35",
     "axios": "^1.5.1",
     "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "node-llama-cpp": "^2.8.8",
+    "sequelize": "^6.37.1"
   },
   "devDependencies": {
     "eslint": "^8.52.0",
