@@ -6,6 +6,8 @@ from langchain.prompts import PromptTemplate
 #Call env variable
 load_dotenv()
 
+#Create function to recieve input from the user
+
 #describing which llm to use
 hub_llm = HuggingFaceHub(repo_id="mrm8488/t5-base-finetuned-wikiSQL")
 
