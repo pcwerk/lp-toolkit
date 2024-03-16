@@ -18,5 +18,5 @@ prompt = PromptTemplate(
 )
 
 hub_chain = LLMChain(prompt = prompt, llm = hub_llm, verbose=True)
-print(hub_chain.run("What is the average age of the respondants using a mobile device"))
+print(hub_chain.run("what is the max age of the respondants who are female"))
 
