@@ -47,6 +47,7 @@ export function Chat() {
 
   // Define function for sendingUserMessage with input data
   const sendUserMessage = (message) => {
+
     const endpoint =
       selectedApiEndpoint || "http://localhost:5050/defaultCallRoute/ask";
     return axios.post(endpoint, {

@@ -7,7 +7,7 @@ export function ChatOption({ image, title, message, selected }) {
     >
       <h3>{title}</h3>
       <img src={image} alt={title} className="max-h-16 max-w-16" />
-      <p>{message}</p>
+      <p className="text-center">{message}</p>
     </div>
   );
 }
