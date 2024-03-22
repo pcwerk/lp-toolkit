@@ -102,7 +102,7 @@ export function Chat() {
                       : option.apiEndpoint
                   );
                 }}
-                className="cursor-pointer"
+                className="bg-transparent cursor-pointer"
               >
                 <ChatOption
                   title={option.title}
