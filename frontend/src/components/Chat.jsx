@@ -3,8 +3,9 @@ import { Container } from "./Container";
 import { ChatBubble } from "./ChatBubble";
 import axios from "axios";
 import { ChatOption } from "./chatOption";
-import metaIcon from "../images/logos/meta.svg";
+import llamaIcon from "../images/logos/llama.svg";
 import openAIIcon from "../images/logos/openai.svg";
+import huggingfaceIcon from "../images/logos/HuggingFace.svg";
 
 const chatOptionsData = [
   {
@@ -16,13 +17,13 @@ const chatOptionsData = [
   {
     title: "Hugging Face",
     message: "Leverage Hugging Face models for diverse AI tasks.",
-    image: metaIcon,
+    image: huggingfaceIcon,
     apiEndpoint: "http://localhost:5050/huggingFaceCallRoute/ask", // Placeholder endpoint
   },
   {
     title: "Llama",
     message: "Explore the capabilities of the Llama model.",
-    image: metaIcon,
+    image: llamaIcon,
     apiEndpoint: "http://localhost:5050/llamaCallRoute/ask", // Placeholder endpoint
   },
 ];
