@@ -3,7 +3,6 @@ import { Container } from "./Container";
 import { ChatBubble } from "./ChatBubble";
 import axios from "axios";
 import { ChatOption } from "./chatOption";
-import llamaIcon from "../images/logos/llama.svg";
 import openAIIcon from "../images/logos/openai.svg";
 import huggingfaceIcon from "../images/logos/HuggingFace.svg";
 
@@ -19,12 +18,6 @@ const chatOptionsData = [
     message: "Leverage Hugging Face models for diverse AI tasks.",
     image: huggingfaceIcon,
     apiEndpoint: "http://localhost:5050/huggingFaceCallRoute/ask", // Placeholder endpoint
-  },
-  {
-    title: "Llama",
-    message: "Explore the capabilities of the Llama model.",
-    image: llamaIcon,
-    apiEndpoint: "http://localhost:5050/llamaCallRoute/ask", // Placeholder endpoint
   },
 ];
 
@@ -48,7 +41,6 @@ export function Chat() {
 
   // Define function for sendingUserMessage with input data
   const sendUserMessage = (message) => {
-
     const endpoint =
       selectedApiEndpoint || "http://localhost:5050/defaultCallRoute/ask";
     return axios.post(endpoint, {
