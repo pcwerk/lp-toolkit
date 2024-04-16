@@ -9,13 +9,14 @@ app.use(express.urlencoded({ extended: true }));
 
 // Allow CORS only for specific origins (recommended for production)
 const corsOptions = {
-	origin: ["http://localhost:3000", "http://localhost:80"] // Replace this with your application's actual origin
+  origin: ["http://localhost:3000", "http://localhost:80"], // Replace this with your application's actual origin
 };
 app.use(cors(corsOptions));
 
 const port = process.env.PORT || 5050;
-const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/lp-toolkit'
-console.log("MONGO URI" , mongoURI)
+const mongoURI =
+  process.env.MONGO_URI || "mongodb://localhost:27017/lp-toolkit";
+console.log("MONGO URI", mongoURI);
 app.use("/serverHealthRoutes", serverHealthRoutes);
 app.use("/langchainCallRoute", langchainCallRoute);
 
