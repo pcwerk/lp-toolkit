@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export function AISettingsModal({ isOpen, onClose }) {
-  const [temperature, setTemperature] = useState(0.7); // Default temperature value
-  const [tokenLimit, setTokenLimit] = useState(100); // Default token limit
+  const [temperature, setTemperature] = useState(0.7);
+  const [tokenLimit, setTokenLimit] = useState(100);
 
   const handleTemperatureChange = (e) => {
     setTemperature(e.target.value);
@@ -13,6 +13,11 @@ export function AISettingsModal({ isOpen, onClose }) {
 
   const handleTokenLimitChange = (e) => {
     setTokenLimit(e.target.value);
+  };
+
+  const handleSave = () => {
+    console.log("Saving settings:", { temperature, tokenLimit });
+    onClose();
   };
 
   return (
@@ -52,12 +57,15 @@ export function AISettingsModal({ isOpen, onClose }) {
                     min="0"
                     max="1"
                     step="0.01"
-                    value={temperature} // Hardcoded value
+                    value={temperature}
                     onChange={handleTemperatureChange}
                     className="w-full h-2 bg-gray-200 rounded-lg  appearance-none cursor-pointer"
                   />
-                  <div className="text-right text-sm text-gray-600">{temperature}</div>
+                  <div className="text-right text-sm text-gray-600">
+                    {temperature}
+                  </div>
                 </div>
+
                 {/* Token Limit Input */}
                 <div className="mb-6">
                   <label
@@ -72,11 +80,18 @@ export function AISettingsModal({ isOpen, onClose }) {
                     name="token-limit"
                     min="1"
                     max="512"
-                    value={tokenLimit} // Hardcoded value
+                    value={tokenLimit}
                     onChange={handleTokenLimitChange}
                     className="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                 </div>
+
+                <button
+                  onClick={handleSave}
+                  className="mt-4 w-full text-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Save Settings
+                </button>
               </div>
             </div>
           </Dialog.Panel>
