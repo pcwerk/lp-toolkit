@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
 export function AISettingsModal({ isOpen, onClose }) {
   const [temperature, setTemperature] = useState(0.7);
@@ -14,9 +15,29 @@ export function AISettingsModal({ isOpen, onClose }) {
     setTokenLimit(e.target.value);
   };
 
-  const handleSave = () => {
-    console.log("Saving settings:", { temperature, tokenLimit });
-    onClose();
+  const handleSave = async () => {
+    try {
+      console.log("Saving settings:", { temperature, tokenLimit });
+
+      // Make a request to update the temperature
+      await axios.post(
+        "http://localhost:5050/langchainCallRoute/updateTemperature",
+        { temperature }
+      );
+
+      // Make a request to update the token limit
+      await axios.post(
+        "http://localhost:5050/langchainCallRoute/updateTokenLimit",
+        { tokenLimit }
+      );
+
+      onClose();
+
+      alert("Settings updated successfully!"); //Maybe remove this later
+    } catch (error) {
+      console.error("Failed to update settings", error);
+      alert("Failed to update settings.");
+    }
   };
 
   return (

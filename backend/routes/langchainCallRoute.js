@@ -31,7 +31,7 @@ langchainCallRoute.post("/updateTemperature", async (req, res) => {
   try {
     const { temperature } = req.body;
     const fastResponse = await axios.post(
-      "http://langchain:8000/update-temperature",
+      "http://langchain:8000/set-temperature",
       { temperature }
     );
     res.json({
@@ -50,7 +50,7 @@ langchainCallRoute.post("/updateTokenLimit", async (req, res) => {
   try {
     const { tokenLimit } = req.body;
     const fastResponse = await axios.post(
-      "http://langchain:8000/update-token-limit",
+      "http://langchain:8000/set-token-limit",
       { token_limit: tokenLimit }
     );
     res.json({
