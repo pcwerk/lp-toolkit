@@ -6,7 +6,6 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 export function AISettingsModal({ isOpen, onClose }) {
   const [temperature, setTemperature] = useState(0.7);
   const [tokenLimit, setTokenLimit] = useState(100);
-
   const handleTemperatureChange = (e) => {
     setTemperature(e.target.value);
   };
