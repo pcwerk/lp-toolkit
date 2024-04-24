@@ -2,14 +2,13 @@ from fastapi import FastAPI
 from pydantic import BaseModel  # Data validation
 from langchain_agent import conversation
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_agent import process_input
 
 
 # Input must be a string
 class InputData(BaseModel):
     human_input: str
 # Output must be a string
-
-
 class Output(BaseModel):
     output: str
 
@@ -36,9 +35,15 @@ app.add_middleware(
 
 # Endpoint for text input
 
-
+#Endpoint for openAI use
 @app.post("/process-lang")
 async def input(input: InputData):  # Take in the Inputdata string as param
     # calls conversation function from langchain_agent
     output = Output(output=conversation(input.human_input))
     return output  # returns outpu
+
+#Endpoint for HuggingFace Use
+@app.post("/hfprocesstext")
+async def input(input_data: InputData):
+    processed_output = process_input(input_data.human_input)
+    return Output(output=processed_output)
