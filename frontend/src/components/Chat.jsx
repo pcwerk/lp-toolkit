@@ -3,6 +3,7 @@ import { Container } from "./Container";
 import { ChatBubble } from "./ChatBubble";
 import axios from "axios";
 import { ChatOption } from "./chatOption";
+import { useModal } from "../contexts/ModalContext"; // Import the useModal hook
 import openAIIcon from "../images/logos/openai.svg";
 import huggingfaceIcon from "../images/logos/HuggingFace.svg";
 
@@ -17,15 +18,19 @@ const chatOptionsData = [
     title: "Hugging Face",
     message: "Leverage Hugging Face models for diverse AI tasks.",
     image: huggingfaceIcon,
-    apiEndpoint: "http://localhost:5050/huggingFaceCallRoute/ask", // Placeholder endpoint
+    apiEndpoint: "http://localhost:5050/huggingFaceCallRoute/ask",
   },
 ];
 
 export function Chat() {
   const [messages, setMessages] = useState([]);
   const [currentMessage, setCurrentMessage] = useState("");
-  const [selectedModel, setSelectedModel] = useState(null);
-  const [selectedApiEndpoint, setSelectedApiEndpoint] = useState("");
+  const {
+    selectedModel,
+    setSelectedModel,
+    selectedApiEndpoint,
+    setSelectedApiEndpoint,
+  } = useModal();
 
   const fetchTimestamp = async () => {
     try {
@@ -39,41 +44,38 @@ export function Chat() {
     }
   };
 
-  // Define function for sendingUserMessage with input data
-  const sendUserMessage = (message) => {
+  const sendUserMessage = async (message) => {
     const endpoint =
       selectedApiEndpoint || "http://localhost:5050/defaultCallRoute/ask";
-    return axios.post(endpoint, {
-      data: message,
-    });
+    try {
+      return await axios.post(endpoint, { data: message });
+    } catch (error) {
+      console.error("Failed to send user message:", error);
+      throw error;
+    }
   };
 
   const sendMessage = async () => {
-    if (currentMessage) {
-      //timestamp
-      let timestamp = await fetchTimestamp();
-      //add user message to chat
-      setMessages([...messages, { type: "user", content: currentMessage }]);
-      //try to send user message to express route
-      try {
-        const response = await sendUserMessage(currentMessage);
-        //add response from express route to chat
-        setMessages([
-          ...messages,
-          { type: "user", content: currentMessage },
-          { type: "response", content: response.data.dataFromFastapi.output },
-          {
-            type: "response",
-            content: timestamp,
-          },
-        ]);
-      } catch (error) {
-        console.log("Failed to send user message: ", error);
-      }
+    if (!currentMessage.trim()) return;
+    let timestamp = await fetchTimestamp();
+    const newMessages = [
+      ...messages,
+      { type: "user", content: currentMessage },
+    ];
 
-      //clear message input
-      setCurrentMessage("");
+    try {
+      const response = await sendUserMessage(currentMessage);
+      newMessages.push({
+        type: "response",
+        content: response.data.dataFromFastapi.output,
+      });
+      newMessages.push({ type: "response", content: timestamp });
+    } catch (error) {
+      console.error("Failed to send user message:", error);
     }
+
+    setMessages(newMessages);
+    setCurrentMessage("");
   };
 
   return (
@@ -85,14 +87,8 @@ export function Chat() {
               <div
                 key={index}
                 onClick={() => {
-                  setSelectedModel((prevModel) =>
-                    prevModel === option.title ? null : option.title
-                  );
-                  setSelectedApiEndpoint((prevEndpoint) =>
-                    prevEndpoint === option.apiEndpoint
-                      ? ""
-                      : option.apiEndpoint
-                  );
+                  setSelectedModel(option.title);
+                  setSelectedApiEndpoint(option.apiEndpoint);
                 }}
                 className="cursor-pointer"
               >
@@ -105,31 +101,22 @@ export function Chat() {
               </div>
             ))}
           </div>
-
-          {messages.map((message, index) => {
-            {
-              /*  Check if the message type is 'user', then render ChatBubble with response*/
-            }
-            if (message.type === "user") {
-              return (
-                <ChatBubble
-                  key={index}
-                  message={message}
-                  response={messages[index + 1]}
-                  index={index}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
+          {messages.map((message, index) =>
+            message.type === "user" ? (
+              <ChatBubble
+                key={index}
+                message={message}
+                response={messages[index + 1]}
+                index={index}
+              />
+            ) : null
+          )}
         </div>
       </Container>
-
-      <div className="fixed bottom-0  w-full pb-4 items-center   bg-gradient-to-b from-white to-gray-200 dark:bg-gradient-to-b dark:from-black dark:to-black">
-        <Container className="flex bg-white shadow-md dark:shadow-none rounded-md p-2 shadow-gray-400 dark:bg-[#444A4B]">
+      <div className="fixed bottom-0 w-full pb-4 bg-gradient-to-b from-white to-gray-200 dark:bg-gradient-to-b dark:from-black dark:to-gray-900">
+        <Container className="flex bg-white shadow-md rounded-md p-2 shadow-gray-400 dark:bg-[#444A4B]">
           <input
-            className="flex-1 p-2  rounded-md dark:bg-[#131314] dark:border dark:border-gray-500 dark:text-white"
+            className="flex-1 p-2 rounded-md dark:bg-[#131314] dark:border dark:border-gray-500 dark:text-white"
             value={currentMessage}
             onChange={(e) => setCurrentMessage(e.target.value)}
             placeholder="Type your message..."
