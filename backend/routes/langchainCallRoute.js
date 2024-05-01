@@ -54,7 +54,7 @@ langchainCallRoute.post("/updateTokenLimit", async (req, res) => {
     const fastResponse = await axios.post(
       "http://langchain:8000/set-token-limit",
       {
-        token_limit: tokenLimit,
+        new_token_limit: tokenLimit,
       }
     );
     res.json({
