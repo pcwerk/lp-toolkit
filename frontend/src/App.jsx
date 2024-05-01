@@ -1,13 +1,16 @@
 import "./App.css";
 import { Header } from "./components/Header";
-import { Chat } from "./components/Chat.jsx"
+import { Chat } from "./components/Chat.jsx";
+import { ModalProvider } from "./contexts/ModalContext";
 
 function App() {
   return (
-    <div className="flex flex-col h-screen">
-      <Header />
-      <Chat />
-    </div>
+    <ModalProvider>
+      <div className="flex flex-col h-screen">
+        <Header />
+        <Chat />
+      </div>
+    </ModalProvider>
   );
 }
 

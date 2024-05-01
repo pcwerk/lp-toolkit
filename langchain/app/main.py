@@ -1,13 +1,21 @@
-from fastapi import FastAPI
-from pydantic import BaseModel  # Data validation
-from langchain_agent import conversation
+from fastapi import FastAPI, HTTPException, status
+from pydantic import BaseModel  
+from langchain_agent import conversation, set_temperature, set_token_limit
+
 from fastapi.middleware.cors import CORSMiddleware
 
 
 # Input must be a string
 class InputData(BaseModel):
     human_input: str
-# Output must be a string
+
+
+class TemperatureData(BaseModel):
+    new_temperature: float
+
+
+class TokenLimitData(BaseModel):
+    new_token_limit: int
 
 
 class Output(BaseModel):
@@ -42,3 +50,24 @@ async def input(input: InputData):  # Take in the Inputdata string as param
     # calls conversation function from langchain_agent
     output = Output(output=conversation(input.human_input))
     return output  # returns outpu
+
+
+@app.post("/set-temperature")
+async def update_temperature(temp_data: TemperatureData):
+    try:
+        set_temperature(temp_data.new_temperature)
+        return {"message": "Temperature updated successfully"}
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+
+
+@app.post("/set-token-limit")
+async def update_token_limit(token_data: TokenLimitData):
+    """Endpoint to set new token limit."""
+    try:
+        set_token_limit(token_data.new_token_limit)
+        return {"message": "Token limit updated successfully"}
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
