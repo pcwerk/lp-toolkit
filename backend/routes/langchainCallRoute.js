@@ -32,6 +32,7 @@ langchainCallRoute.post("/updateTemperature", async (req, res) => {
     const temperature = req.body.data;
     const fastResponse = await axios.post(
       "http://langchain:8000/set-temperature",
+
       {
         new_temperature: temperature,
       }
