@@ -22,13 +22,13 @@ export function AISettingsModal({ isOpen, onClose }) {
       // Make a request to update the temperature
       await axios.post(
         "http://localhost:5050/langchainCallRoute/updateTemperature",
-        { temperature }
+        { data: temperature }
       );
 
       // Make a request to update the token limit
       await axios.post(
         "http://localhost:5050/langchainCallRoute/updateTokenLimit",
-        { tokenLimit }
+        { data: tokenLimit }
       );
 
       onClose();

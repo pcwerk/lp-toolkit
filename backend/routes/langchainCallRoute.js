@@ -28,6 +28,8 @@ langchainCallRoute.post("/ask", async (req, res) => {
 
 //Update Temperature
 langchainCallRoute.post("/updateTemperature", async (req, res) => {
+  console.log("Request: ", req);
+  console.log("Request Body: ", req.body);
   try {
     const temperature = req.body.data;
     const fastResponse = await axios.post(
@@ -50,6 +52,8 @@ langchainCallRoute.post("/updateTemperature", async (req, res) => {
 //Update Max_Token
 // Endpoint to update token limit
 langchainCallRoute.post("/updateTokenLimit", async (req, res) => {
+  console.log("Request: ", req);
+  console.log("Request Body: ", req.body);
   try {
     const tokenLimit = req.body.data;
     const fastResponse = await axios.post(
