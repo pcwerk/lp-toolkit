@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from langchain_agent import conversation, set_temperature, set_token_limit
 
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_agent import process_input
 
 
 # Input must be a string
@@ -71,3 +72,11 @@ async def update_token_limit(token_data: TokenLimitData):
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+    
+
+
+#Endpoint for hugging face use
+@app.post("/hfprocesstext")
+async def input(input_data: InputData):
+    processed_output = process_input(input_data.human_input)
+    return Output(output=processed_output)
