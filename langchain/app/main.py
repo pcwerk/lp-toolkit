@@ -3,6 +3,7 @@ from pydantic import BaseModel
 from langchain_agent import conversation, set_temperature, set_token_limit
 
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_agent import process_input
 
 
 # Input must be a string
