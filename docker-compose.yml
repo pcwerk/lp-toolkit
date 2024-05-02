@@ -1,7 +1,6 @@
-version: '3.8'
+version: "3.8"
 
 services:
-
   frontend:
     container_name: lp-toolkit-frontend
     build:
@@ -42,6 +41,7 @@ services:
       - ./langchain/app:/usr/src/app
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - HUGGINGFACEHUB_API_TOKEN=${HUGGINGFACEHUB_API_TOKEN}
     restart: unless-stopped
     networks:
       - express-mongo
