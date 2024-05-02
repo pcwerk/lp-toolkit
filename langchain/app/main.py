@@ -76,7 +76,7 @@ async def update_token_limit(token_data: TokenLimitData):
 
 
 #Endpoint for hugging face use
-@app.post("/hfprocesstext")
+@app.post("/hfprocesssql")
 async def input(input_data: InputData):
     processed_output = process_input(input_data.human_input)
     return Output(output=processed_output)

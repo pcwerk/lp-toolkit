@@ -73,7 +73,7 @@ langchainCallRoute.post("/updateTokenLimit", async (req, res) => {
 });
 
 //Endpoint for HuggingFaceSQLCAll
-langchainCallRoute.post("/askhf", async (req, res) => {
+langchainCallRoute.post("/askhfsql", async (req, res) => {
   //call fastapi from this endpoint
   try {
     //get user input
@@ -81,7 +81,7 @@ langchainCallRoute.post("/askhf", async (req, res) => {
 
     //make request to fastapi server
     const fastResponse = await axios.post(
-      "http://langchain:8000/hfprocesstext",
+      "http://langchain:8000/hfprocesssql",
       {
         human_input: userInput,
       }
