@@ -18,7 +18,7 @@ const chatOptionsData = [
     title: "Hugging Face",
     message: "Leverage Hugging Face models for diverse AI tasks.",
     image: huggingfaceIcon,
-    apiEndpoint: "http://localhost:5050/huggingFaceCallRoute/askhf",
+    apiEndpoint: "http://localhost:5050/langchainCallRoute/askhf",
   },
 ];
 
