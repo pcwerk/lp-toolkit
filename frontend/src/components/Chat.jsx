@@ -15,10 +15,16 @@ const chatOptionsData = [
     apiEndpoint: "http://localhost:5050/langchainCallRoute/ask",
   },
   {
-    title: "Hugging Face",
-    message: "Leverage Hugging Face models for diverse AI tasks.",
+    title: "English to SQL",
+    message: "Convert English to SQL",
     image: huggingfaceIcon,
     apiEndpoint: "http://localhost:5050/langchainCallRoute/askhfsql",
+  },
+  {
+    title: "Ingredients to Recipe",
+    message: "Add Ingredients seperated by a comma, and produce a recipe!",
+    image: huggingfaceIcon,
+    apiEndpoint: "http://localhost:5050/langchainCallRoute/askhfchef",
   },
 ];
 
