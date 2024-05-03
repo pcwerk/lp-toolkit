@@ -3,7 +3,7 @@ from pydantic import BaseModel
 from langchain_agent import conversation, set_temperature, set_token_limit
 
 from fastapi.middleware.cors import CORSMiddleware
-from langchain_agent import process_input
+from langchain_agent import process_input, process_input_chef
 
 
 # Input must be a string
@@ -76,7 +76,14 @@ async def update_token_limit(token_data: TokenLimitData):
 
 
 #Endpoint for hugging face use
+#SQL Endpoint
 @app.post("/hfprocesssql")
 async def input(input_data: InputData):
     processed_output = process_input(input_data.human_input)
+    return Output(output=processed_output)
+
+#ChatBot Endpoint
+@app.post("/hfprocesschef")
+async def input(input_data: InputData):
+    processed_output = process_input_chef(input_data.human_input)
     return Output(output=processed_output)
