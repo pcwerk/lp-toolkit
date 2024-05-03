@@ -6,6 +6,7 @@ import { ChatOption } from "./chatOption";
 import { useModal } from "../contexts/ModalContext"; // Import the useModal hook
 import openAIIcon from "../images/logos/openai.svg";
 import huggingfaceIcon from "../images/logos/HuggingFace.svg";
+import huggingchef from "../images/logos/hfchef.png";
 
 const chatOptionsData = [
   {
@@ -23,7 +24,7 @@ const chatOptionsData = [
   {
     title: "Ingredients to Recipe",
     message: "Add Ingredients seperated by a comma, and produce a recipe!",
-    image: huggingfaceIcon,
+    image: huggingchef,
     apiEndpoint: "http://localhost:5050/langchainCallRoute/askhfchef",
   },
 ];
