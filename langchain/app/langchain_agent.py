@@ -69,3 +69,21 @@ def process_input(human_input: str) -> str:
     hub_chain = huggingFaceConversation()
     result = hub_chain.run(human_input)
     return result
+
+#Process chat function
+def huggingFaceChef():
+    #describing which llm to use
+    hub_llm = HuggingFaceHub(repo_id="flax-community/t5-recipe-generation")
+    #Template
+    prompt = PromptTemplate(
+        input_variables=['question'],
+        template="{question}"
+        )
+    #Creating the hub chain and return it
+    hub_chain = LLMChain(prompt = prompt, llm = hub_llm, verbose=True)
+    return hub_chain
+
+def process_input_chef(human_input: str) -> str:
+    hub_chain = huggingFaceChef()
+    result = hub_chain.run(human_input)
+    return result
